@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Survey Form</title>
+{% endblock %}
+{% block body %}
+<h1>Response Table</h1>
+<table>
+        <tr>
+            <th>User-ID</th>
+            <th>q1</th>
+            <th>q2</th>
+            <th>q3</th>
+            <th>Date</th>
+            <th>Delete</th>
+        </tr>
+        {% for task in tasks %}
+            <tr>
+                <td>{{ task.id }}</td>
+                <td>{{ task.q1 }}</td>
+                <td>{{ task.q2 }}</td>
+                <td>{{ task.q3 }}</td>
+                <td>{{ task.date_created.date() }}</td>
+                <td>
+                    <a href="/delete/{{task.id}}">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
